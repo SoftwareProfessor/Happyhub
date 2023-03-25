@@ -1,0 +1,598 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+*{                          
+    margin: 0;              
+    padding: 0;             
+    box-sizing: border-box;
+    font-family: "Roboto",sans-serif;
+    user-select: none;
+}                           
+:root{              
+    --colorbody: #ebf3ff; 
+    --color60: #ffff; 
+    --colorgray: #333; 
+    --color30: #000;  
+    --color10: #166cff;    
+}
+body {
+    background-color: var(--colorbody);
+}
+input,select,textarea {
+    outline: none;
+}
+.result {
+    margin-bottom: 10px;
+}
+.result.Success,
+.result.Failed {
+    padding: 10px;
+    width: 100%;
+    border-radius: 5px;
+    font-weight: 500;
+}
+.result.Success {
+    background-color: rgba(15, 255, 135, 0.295);
+    color: rgb(2, 160, 81);
+    border-left:2px solid rgb(2, 160, 81);
+}
+.result.Failed {
+    background-color: rgba(255, 15, 75, 0.219);
+    color: rgb(151, 5, 49);
+    border-left: 3px solid rgb(151, 5, 49);
+}
+/*=========== Loading ===========*/
+.loading {
+    position: fixed;
+    width: 100%;
+    height: 100vh;
+    background-color: var(--color10);
+    z-index: 999999999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    user-select: none;
+}
+.loading > div {
+    gap: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+.loading > div > div {
+    position: relative;
+    width: 120px;
+    height: 120px;
+    border: 5px solid var(--color60);;
+    border-top-color: transparent;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    animation: loading1 2s infinite linear;
+}
+.loading > div > div::before {
+    content: "";
+    position: absolute;
+    width: 15px;
+    height: 15px;
+    border: 4px var(--color60);
+    border-style: dotted;
+    border-radius: 50%;
+    top: -10px;
+    left: 20px;
+    animation: loading2 1s infinite linear;
+
+}
+
+.loading > div > div > div {
+    position: relative;
+    width: 75px;
+    height: 75px;
+    border: 5px solid var(--color60);;
+    border-bottom-color: transparent;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    animation: loading2 2s infinite linear;
+
+}
+.loading div > div > div::before {
+    content: "";
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    border: 4px var(--color60);
+    border-style: dashed;
+    border-radius: 50%;
+    bottom: -10px;
+    right: 10px;
+    animation: loading1 2s infinite linear;
+}
+@keyframes loading1 {
+    0%{
+        rotate: 0deg;
+    }
+    100% {
+        rotate: 360deg;
+    }
+}
+@keyframes loading2 {
+    0%{
+        rotate: 0deg;
+    }
+    100% {
+        rotate: 360deg;
+    }
+}
+::-webkit-scrollbar{
+    background-color: transparent;
+    width: 10px;
+    border-radius: 20px;
+}
+::-webkit-scrollbar-thumb {
+    background-color: var(--color10);
+    border-radius: 20px;
+}
+::-webkit-scrollbar-thumb:hover {
+    background-color: #1460e4;
+}
+::-webkit-scrollbar-track{
+    transition: all 0.3s ;
+    border-radius: 20px;
+    box-shadow: 0 0 5px var(--colorbody);
+} 
+
+/*=========== Sign ===========*/
+.sign {
+    position: absolute;
+    display: flex;
+    width: 90%;
+    min-height: 90vh;
+    background-color: var(--color60);
+    border-radius: 20px;
+    box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+    left: 50%;
+    top: 50%;
+    translate: -50% -50%;
+    z-index: 1;
+}
+
+.sign .left {
+    position: relative;
+    width: 40%;
+    min-height: 90vh;
+    background: url("../images/social-media-friendships-285533-1581633467277-main.700x0c.jpg") no-repeat;
+    background-size: cover;
+    background-position: center 100%;
+    padding: 50px;
+    border-radius: 20px 0 0 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    animation: imagesSign 10s infinite linear;
+}
+@keyframes imagesSign {
+    0% ,100% {
+        background: url("../images/social-media-friendships-285533-1581633467277-main.700x0c.jpg") no-repeat;
+        background-size: cover;
+        background-position: center 100%;
+    }
+    25% {
+        background: url("../images/images.jpg") no-repeat;
+        background-size: cover;
+        background-position: center 100%;
+    }
+    50% {
+        background: url("../images/image2.png") no-repeat;
+        background-size: cover;
+        background-position: center 100%;
+    }
+    75% {
+        background: url("../images/image3.jpg") no-repeat;
+        background-size: cover;
+        background-position: center 100%;
+    }
+}
+.sign .left::before {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-radius: 20px 0 0 20px;
+    left: 0px;
+    bottom: 0px;
+    background-color: #00000088;
+    z-index: 1.2;
+}
+.sign .left .box-text {
+    z-index: 1;
+}
+.sign .left .box-text img {
+    width: 100%;
+}
+.sign .right {
+    position: relative;
+    width: 60%;
+    border-radius: 0 10px 10px 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.sign .right .form {
+    width: 80%;
+}
+
+.sign .right .form h2 {
+    font-size: 1.8rem;
+    position: relative;
+    margin-bottom: 15px;
+}
+.sign .right .form h2::before {
+    content: "";
+    position: absolute;
+    width: 30px;
+    height: 4px;
+    border-radius: 20px;
+    background-color: var(--color10);
+    left: 0;
+    bottom: 0px;
+}
+.sign .right .form  .btn {
+    position: absolute;
+    display: flex;
+    padding: 7px 10px;
+    height: fit-content;
+    background-color: var(--color10);
+    color: var(--color60);
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: 500;
+    letter-spacing: 1px;
+    top: 25px;
+    right: 25px;
+}
+.sign .right .form form .input {
+    margin-bottom: 10px;
+}
+.sign .right .form form .input label {
+    font-size: .9rem;
+}
+.sign .right .form form .input input,
+.sign .right .form form .input select{
+    width: 100%;
+    padding: 10px 15px;
+    border-radius: 5px;
+    border: 2px solid #ddd;
+    transition: all .3s ;
+}
+.sign .right .form form .input input:focus,
+.sign .right .form form .input select:focus {
+    border-color: var(--color10);
+}
+.sign .right .form form .input select option {
+    font-size: 1.1rem;
+}
+.sign .right .form form .check,
+.sign .right .form form .check.forget div {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    margin: 5px 0;
+    font-size: .9rem;
+}
+.sign .right .form form .check input {
+    position: relative;
+    appearance: none;
+    border: none;
+    width: 20px;
+    height: 20px;
+}
+.sign .right .form form .check input::before {
+    content: "";
+    position: absolute;
+    width: 15px;
+    height: 15px;
+    background-color: var(--color60);
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+.sign .right .form form .check input:hover::before {
+    background-color: #ececec;
+}
+.sign .right .form form .check input:checked::before{
+    content: "\f00c";
+    font-family: "Font Awesome 6 Free";
+    font-weight: 900;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--color10);
+    border-color: transparent;
+    color: #fff;
+}
+.sign .right .form form .check label {
+    font-size: .9rem;
+}
+.sign .right .form form .check a {
+    text-decoration: none;
+    color: var(--color10);
+    margin: 0 1px;
+}
+.sign .right .form form .check.forget {
+    justify-content: space-between;
+}
+
+.sign .right .form form .input input[type="submit"] {
+    color: var(--color60);
+    border: none;
+    background-color: var(--color10);
+    font-size: 1.1rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+.sign .right .form form .input input[type="submit"]:hover {
+    background-color: #1460e4;
+}
+
+.sign .right .form p{
+    text-align: center;
+    font-size: 1rem;
+    font-weight: 500;
+    margin-top: 10px;
+    color: var(--colorgray);
+}
+.sign .right .form p a {
+    text-decoration: none;
+    color: var(--color10);
+}
+
+.sign .right .form .social-media {
+    position: relative;
+    width: 100%;
+    height: 70px;
+    margin-bottom: 20px;
+    padding: 10px;
+    gap: 25px;
+    display: flex;
+}
+.sign .right .form .social-media a{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40%;
+    margin-bottom: 15px;
+    color: var(--color60);
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: 500;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+}
+.sign .right .form .social-media a.Facebook {
+    background-color: var(--color10);
+}
+.sign .right .form .social-media a.Twiter {
+    background-color: rgb(0, 162, 255);
+}
+.sign .right .form .social-media a.Google {
+    color: rgb(255, 0, 55);
+}
+.sign .right .form .social-media::before {
+    content: "OR";
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    background-color: var(--color60);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 500;
+    border-radius: 50%;
+    bottom: -17.5px;
+    font-size: .9rem;
+    left: 50%;
+    transform: translateX(-50%);
+    border: 2px solid #ddd;
+    z-index: 2;
+    color: var(--colorgray);
+}
+.sign .right .form .social-media::after {
+    content: "";
+    position: absolute;
+    width: 50%;
+    height: 2px;
+    background-color: #ddd;
+    bottom: 0px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1;
+}
+
+
+
+/*  header  */
+header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 25px;
+    background-color: var(--color10);
+    box-shadow: 0 1px 5px var(--color10);
+}
+header .left-section,
+header .right-section  {
+    display: flex;
+    align-items: center;
+}
+header .left-section .logo {
+    text-decoration: none;
+}
+
+header .left-section .logo img {
+    width: 110px;
+}
+header .right-section nav  {
+    margin-right: 25px;
+}
+header .right-section nav ul {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+}
+header .right-section nav ul li,
+header .right-section nav ul li a {
+    position: relative;
+    color: var(--color60);
+    display: flex;
+    width: 40px;
+    height: 40px;
+    align-items: center;
+    justify-content: center;
+    background-color: #1864e669;
+    border-radius: 50%;
+    font-size: 0.9rem;
+    cursor: pointer;
+}
+
+header .right-section nav ul li.notification::before  {
+    content: "";
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: rgb(255, 0, 106);
+    border: 3px solid var(--color10);
+    top: 0px;
+    right: 0px;
+    z-index: 1;
+    animation: notification 0.5s infinite linear;
+}
+@keyframes notification {
+    from{
+        scale: .7;
+    }
+    from{
+        scale: 1.2;
+        background-color: rgb(255, 0, 21);
+    }
+}
+header .right-section nav ul li a {
+    text-decoration: none;
+    color: #ffffff9d ;
+    
+}
+header .right-section nav ul li:hover,
+header .right-section nav ul li a:hover {
+    color: var(--color60);
+}
+header .right-section .avatar {
+    padding: 2px;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    border: 1px solid var(--colorbody);
+}
+
+header .right-section .avatar img {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    cursor: pointer;
+}
+/* Main */
+main {
+    padding: 25px; 
+    background-color: red;
+    min-height: calc(100vh - 70px);
+}
+
+
+
+
+
+
+
+
+
+
+
+@media (max-width: 800px) {
+    .loading > div img {
+        width: 50%;
+    }
+    .loading > div > div {
+        width: 90px;
+        height: 90px;
+    }
+    .loading > div > div::before {
+        width: 5px;
+        height: 5px;
+    }
+    .loading > div > div > div {
+        width: 50px;
+        height: 50px;
+    }
+    .loading > div > div > div::before {
+        width: 5px;
+        height: 5px;
+    }
+    .sign{
+        width: 100%;
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        left: 0;
+        top: 0;
+        border-radius: 0px;
+        translate: 0% 0%;
+    }
+    .sign .left{
+        position: absolute;
+        width: 100%;
+        min-height: 100%;
+        border-radius: 0px;
+    }
+    .sign .left::before {
+        border-radius: 0;
+    }
+    .sign .right{
+        position: absolute;
+        z-index: 333;
+        background-color: var(--color60);
+        padding: 20px;
+        width: calc(100% - 20px);
+        border-radius: 20px;
+    }
+    .sign .right .form {
+        width: 100%;
+    }
+    .sign .right .form form .input input,
+    .sign .right .form form .input select {
+        padding: 10px;
+    }
+    .sign .right .form form .input select option {
+        font-size: .8rem;
+    }
+    .sign .right .form form .check.forget > div {
+        display: none;
+    }
+    header {
+        padding: 15px 15px 5px 15px;
+    }
+    header .left-section .logo img {
+        width: 90px;
+    }
+    header .right-section .avatar {
+        width: 45px;
+        height: 45px;
+    }
+    main {
+        min-height: calc(100vh - 65px);
+        padding: 10px 0 20px 0; 
+    }
+    
+}
