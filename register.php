@@ -1,3 +1,9 @@
+<?php 
+session_start();
+
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,6 +14,8 @@
     <link rel="stylesheet" href="assets/css/style.css">
     <title>HappyHub</title>
     <script src="assets/js/App.js" defer></script>
+    <!-- Ajax -->
+    <script src="App/ajax/register.js" defer></script>
 </head>
 <body>
     <!-- Loading -->
@@ -38,15 +46,15 @@
                     <div class="result Success">Success</div>
                     <div class="input">
                         <label for="FullName">Full Name</label>
-                        <input type="text" id="FullName" required>
+                        <input type="text" name="FullName" id="FullName" >
                     </div>
                     <div class="input">
                         <label for="Email">Email</label>
-                        <input type="Email" id="Email" required>
+                        <input type="Email" id="Email" >
                     </div>
                     <div class="input">
                         <label for="Password">Password</label>
-                        <input type="Password" id="Password" required>
+                        <input type="Password" id="Password" >
                     </div>
                     <div class="input">
                         <label for="Gender">Gender</label>
@@ -60,7 +68,7 @@
                             <input type="checkbox" id="active" ><label for="active">Agree to all <a href="">terms</a> and <a href="">rules</a></label>
                         </div>
 
-                    <div class="input">
+                    <div class="input submit">
                         <input type="submit" value="Register">
                     </div>
                 </form>
